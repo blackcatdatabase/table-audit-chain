@@ -6,11 +6,11 @@ Hash chain built on top of audit_log entries for tamper evidence.
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
 | audit_id | BIGINT | NO |  | Audit entry id (FK audit_log.id). |
-| created_at | TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
-| hash | BYTEA | NO |  | Hash of the current entry. |
+| created_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
+| hash | VARBINARY(255) | NO |  | Hash of the current entry. |
 | chain_name | VARCHAR(100) | NO | default | Chain namespace (multiple chains may coexist). |
 | id | BIGINT | NO |  | Surrogate primary key. |
-| prev_hash | BYTEA | YES |  | Hash of the previous audit entry in the chain. |
+| prev_hash | VARBINARY(255) | YES |  | Hash of the previous audit entry in the chain. |
 
 ## Engine Details
 
@@ -55,7 +55,7 @@ Foreign keys:
 ## Views
 | View | Engine | Flags | File |
 | --- | --- | --- | --- |
-| vw_audit_chain | mysql | algorithm=MERGE, security=INVOKER | [packages\audit-chain\schema\040_views.mysql.sql](https://github.com/blackcatacademy/blackcat-database/packages/audit-chain/schema/040_views.mysql.sql) |
-| vw_audit_chain_gaps | mysql | algorithm=TEMPTABLE, security=INVOKER | [packages\audit-chain\schema\040_views_joins.mysql.sql](https://github.com/blackcatacademy/blackcat-database/packages/audit-chain/schema/040_views_joins.mysql.sql) |
-| vw_audit_chain | postgres |  | [packages\audit-chain\schema\040_views.postgres.sql](https://github.com/blackcatacademy/blackcat-database/packages/audit-chain/schema/040_views.postgres.sql) |
-| vw_audit_chain_gaps | postgres |  | [packages\audit-chain\schema\040_views_joins.postgres.sql](https://github.com/blackcatacademy/blackcat-database/packages/audit-chain/schema/040_views_joins.postgres.sql) |
+| vw_audit_chain | mysql | algorithm=MERGE, security=INVOKER | [schema\040_views.mysql.sql](schema\040_views.mysql.sql) |
+| vw_audit_chain_gaps | mysql | algorithm=TEMPTABLE, security=INVOKER | [schema\040_views_joins.mysql.sql](schema\040_views_joins.mysql.sql) |
+| vw_audit_chain | postgres |  | [schema\040_views.postgres.sql](schema\040_views.postgres.sql) |
+| vw_audit_chain_gaps | postgres |  | [schema\040_views_joins.postgres.sql](schema\040_views_joins.postgres.sql) |
