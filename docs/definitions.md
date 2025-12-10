@@ -6,11 +6,11 @@ Hash chain built on top of audit_log entries for tamper evidence.
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
 | audit_id | BIGINT | NO |  | Audit entry id (FK audit_log.id). |
-| created_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
-| hash | VARBINARY(255) | NO |  | Hash of the current entry. |
+| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
+| hash | mysql: VARBINARY(255) / postgres: BYTEA | NO |  | Hash of the current entry. |
 | chain_name | VARCHAR(100) | NO | default | Chain namespace (multiple chains may coexist). |
 | id | BIGINT | NO |  | Surrogate primary key. |
-| prev_hash | VARBINARY(255) | YES |  | Hash of the previous audit entry in the chain. |
+| prev_hash | mysql: VARBINARY(255) / postgres: BYTEA | YES |  | Hash of the previous audit entry in the chain. |
 
 ## Engine Details
 
