@@ -3,14 +3,14 @@
 Hash chain built on top of audit_log entries for tamper evidence.
 
 ## Columns
-| Column | Type | Null | Default | Description |
-| --- | --- | --- | --- | --- |
-| id | BIGINT | NO |  | Surrogate primary key. |
-| audit_id | BIGINT | NO |  | Audit entry id (FK audit_log.id). |
-| chain_name | VARCHAR(100) | NO | default | Chain namespace (multiple chains may coexist). |
-| prev_hash | mysql: VARBINARY(255) / postgres: BYTEA | YES |  | Hash of the previous audit entry in the chain. |
-| hash | mysql: VARBINARY(255) / postgres: BYTEA | NO |  | Hash of the current entry. |
-| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
+| Column | Type | Null | Default | Description | Crypto |
+| --- | --- | --- | --- | --- | --- |
+| id | BIGINT | NO |  | Surrogate primary key. |  |
+| audit_id | BIGINT | NO |  | Audit entry id (FK audit_log.id). |  |
+| chain_name | VARCHAR(100) | NO | default | Chain namespace (multiple chains may coexist). |  |
+| prev_hash | mysql: VARBINARY(255) / postgres: BYTEA | YES |  | Hash of the previous audit entry in the chain. |  |
+| hash | mysql: VARBINARY(255) / postgres: BYTEA | NO |  | Hash of the current entry. |  |
+| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |  |
 
 ## Engine Details
 
