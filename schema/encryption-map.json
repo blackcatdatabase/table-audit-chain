@@ -5,13 +5,13 @@
         "audit_id": {
           "strategy": "passthrough"
         },
+        "chain_name": {
+          "strategy": "passthrough"
+        },
         "created_at": {
           "strategy": "passthrough"
         },
         "hash": {
-          "strategy": "passthrough"
-        },
-        "chain_name": {
           "strategy": "passthrough"
         },
         "id": {
